@@ -1,0 +1,143 @@
+{
+ "workflow": "supplier-restock-pipeline",
+ "run_id": "run-2026-10-21-long-tail",
+ "stages": [
+  {
+   "stage": 1,
+   "role": "ingestion",
+   "status": "success",
+   "output": {
+    "records": [
+     {
+      "sku": "MUG-12",
+      "price_usd": 4.5,
+      "stock": 120
+     },
+     {
+      "sku": "BOWL-7",
+      "price_usd": 3.25,
+      "stock": 40
+     }
+    ]
+   },
+   "log": "Fetched the supplier price feed. Returned 2 records; every record includes sku, price_usd and stock. Output is not empty.",
+   "verbose_log": [
+    "feed poll 00: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 01: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 02: supplier endpoint ok, page 2 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 03: supplier endpoint ok, page 3 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 04: supplier endpoint ok, page 4 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 05: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 06: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 07: supplier endpoint ok, page 2 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 08: supplier endpoint ok, page 3 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 09: supplier endpoint ok, page 4 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 10: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 11: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 12: supplier endpoint ok, page 2 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 13: supplier endpoint ok, page 3 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 14: supplier endpoint ok, page 4 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 15: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 16: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 17: supplier endpoint ok, page 2 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 18: supplier endpoint ok, page 3 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 19: supplier endpoint ok, page 4 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 20: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 21: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 22: supplier endpoint ok, page 2 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 23: supplier endpoint ok, page 3 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 24: supplier endpoint ok, page 4 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 25: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 26: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 27: supplier endpoint ok, page 2 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 28: supplier endpoint ok, page 3 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 29: supplier endpoint ok, page 4 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 30: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 31: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 32: supplier endpoint ok, page 2 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 33: supplier endpoint ok, page 3 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 34: supplier endpoint ok, page 4 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 35: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 36: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 37: supplier endpoint ok, page 2 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 38: supplier endpoint ok, page 3 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 39: supplier endpoint ok, page 4 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 40: supplier endpoint ok, page 0 scanned, catalogue rows buffered, no anomalies, checksum noted",
+    "feed poll 41: supplier endpoint ok, page 1 scanned, catalogue rows buffered, no anomalies, checksum noted"
+   ]
+  },
+  {
+   "stage": 2,
+   "role": "planning",
+   "status": "success",
+   "output": {
+    "plan": [
+     {
+      "sku": "BOWL-7",
+      "order_qty": 60,
+      "risk_score": 0.81
+     },
+     {
+      "sku": "MUG-12",
+      "order_qty": 30,
+      "risk_score": 0.35
+     }
+    ]
+   },
+   "log": "Built the restock plan from both ingestion records. Every entry has sku, order_qty and risk_score, sorted by risk_score descending.",
+   "verbose_log": [
+    "plan pass 00: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 01: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 02: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 03: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 04: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 05: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 06: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 07: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 08: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 09: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 10: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 11: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 12: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 13: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 14: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 15: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 16: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 17: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 18: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 19: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 20: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 21: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 22: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 23: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 24: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 25: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 26: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 27: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 28: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 29: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 30: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 31: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 32: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 33: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 34: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 35: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 36: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 37: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 38: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required",
+    "plan pass 39: candidate set re-ranked, stock thresholds reviewed, supplier lead times cross-checked, no changes required"
+   ]
+  },
+  {
+   "stage": 3,
+   "role": "execution",
+   "status": "error",
+   "output": {
+    "receipt": []
+   },
+   "log": "DECISIVE FAILURE, recorded at the very end of this long trace: the execution agent crashed inside its own delivery module on an unhandled exception while serialising the first order, before submitting anything. No orders were submitted and no receipt was produced. This was a bug in the execution agent itself; the supplier API was never called, so no external outage is involved."
+  }
+ ],
+ "final_status": "failed",
+ "failure": "Execution stage crashed in its own code and delivered nothing, despite a valid plan."
+}
