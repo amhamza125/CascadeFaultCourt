@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paper & ink — court registry identity. Serif display headings,
+     ruled lines, seal-navy accent; signal colors reserved for verdicts. */
+  --color-paper-50: #fcf9f2;
+  --color-paper-100: #f7f2e6;
+  --color-paper-200: #f0e8d5;
+  --color-paper-300: #e4dabd;
+  --color-rule-300: #ddd1b4;
+  --color-rule-400: #c6b78f;
+  --color-rule-500: #a8946a;
+  --color-ink-950: #17130b;
+  --color-ink-900: #221c11;
+  --color-ink-700: #3e3626;
+  --color-ink-500: #71644c;
+  --color-ink-400: #94876a;
+  --color-seal-800: #1e3a5c;
+  --color-seal-700: #274a73;
+  --color-seal-600: #33609a;
+  --color-seal-100: #dfe8f2;
+  --color-vgreen-700: #1d6b3c;
+  --color-vgreen-100: #e2efe1;
+  --color-vred-700: #9c2b1e;
+  --color-vred-100: #f7e4de;
+  --color-vamber-700: #8a5c08;
+  --color-vamber-100: #f7edd2;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Times New Roman", serif;
+  --font-sans: ui-sans-system, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+html {
+  background: var(--color-paper-100);
+}
+
+body {
+  background: var(--color-paper-100);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-seal-100);
+}
+
+.trace-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rule-500) transparent;
+}
+.trace-scroll::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.trace-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-rule-400);
+  border-radius: 4px;
+}

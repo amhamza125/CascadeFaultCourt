@@ -1,0 +1,524 @@
+{
+  "contract": "0xf79fD6B02a50FBB085b64Fb61C7B69DFc80f77a2",
+  "wallets": {
+    "client": "0xD2aF69BB67d446526661A80a280820599c601ed3",
+    "agent1": "0x0BbA411375d7074178980E610B5311dD6Ed34d74",
+    "agent2": "0x8EEb9e644E5916066231E5f077A0931F72baE0C5",
+    "agent3": "0xaAfBC8eC68fB05AccdD295202DF5Cf2d2c977574",
+    "outsider": "0x6FA23bD191266A8680C195eC6a618d2d9d584CaB"
+  },
+  "steps": [
+    {
+      "name": "setup_wallets_funded",
+      "pass": true,
+      "info": "all 5 wallets hold >= 1 GEN"
+    },
+    {
+      "name": "setup_unused_credit_zero",
+      "pass": true,
+      "info": "fresh address credit = 0"
+    },
+    {
+      "name": "register_happy_path",
+      "pass": true,
+      "info": "id=1 status=AWAITING_AGENT_BONDS bounty=300000000000000000 bond=50000000000000000"
+    },
+    {
+      "name": "spec_hash_canonical",
+      "pass": true,
+      "info": "chain=665bcc15dfb7d9ad0d70c8579baaa11dfdee83e2debca0f72a6735e28d290308 local=665bcc15dfb7d9ad0d70c8579baaa11dfdee83e2debca0f72a6735e28d290308"
+    },
+    {
+      "name": "register_zero_bounty_rejected",
+      "pass": true,
+      "info": "reverted=true code[BOUNTY_REQUIRED]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "register_zero_bond_rejected",
+      "pass": true,
+      "info": "reverted=true code[INVALID_BOND]=true state_unchanged=true contract_bal_delta=300000000000000000 (sent=300000000000000000)"
+    },
+    {
+      "name": "register_nondivisible_bounty_rejected",
+      "pass": true,
+      "info": "reverted=true code[BOUNTY_NOT_DIVISIBLE]=true state_unchanged=true contract_bal_delta=300000000000000001 (sent=300000000000000001)"
+    },
+    {
+      "name": "register_duplicate_agents_rejected",
+      "pass": true,
+      "info": "reverted=true code[DUPLICATE_PARTY]=true state_unchanged=true contract_bal_delta=300000000000000000 (sent=300000000000000000)"
+    },
+    {
+      "name": "register_client_as_agent_rejected",
+      "pass": true,
+      "info": "reverted=true code[DUPLICATE_PARTY]=true state_unchanged=true contract_bal_delta=300000000000000000 (sent=300000000000000000)"
+    },
+    {
+      "name": "register_short_mandate_rejected",
+      "pass": true,
+      "info": "reverted=true code[INVALID_MANDATE]=true state_unchanged=true contract_bal_delta=300000000000000000 (sent=300000000000000000)"
+    },
+    {
+      "name": "register_overlong_mandate_rejected",
+      "pass": true,
+      "info": "reverted=true code[INVALID_MANDATE]=true state_unchanged=true contract_bal_delta=300000000000000000 (sent=300000000000000000)"
+    },
+    {
+      "name": "bond_wrong_spec_rejected",
+      "pass": true,
+      "info": "reverted=true code[SPEC_MISMATCH]=true state_unchanged=true contract_bal_delta=50000000000000000 (sent=50000000000000000)"
+    },
+    {
+      "name": "bond_wrong_value_rejected",
+      "pass": true,
+      "info": "reverted=true code[BOND_AMOUNT]=true state_unchanged=true contract_bal_delta=49999999999999999 (sent=49999999999999999)"
+    },
+    {
+      "name": "bond_outsider_rejected",
+      "pass": true,
+      "info": "reverted=true code[ONLY_STAGE_AGENT]=true state_unchanged=true contract_bal_delta=50000000000000000 (sent=50000000000000000)"
+    },
+    {
+      "name": "bond_first_recorded",
+      "pass": true,
+      "info": "bonds=[true,false,false]"
+    },
+    {
+      "name": "bond_double_rejected",
+      "pass": true,
+      "info": "reverted=true code[BOND_ALREADY_POSTED]=true state_unchanged=true contract_bal_delta=50000000000000000 (sent=50000000000000000)"
+    },
+    {
+      "name": "pipeline_activates_after_3_bonds",
+      "pass": true,
+      "info": "status=ACTIVE_PIPELINE"
+    },
+    {
+      "name": "expire_unbonded_wrong_status_rejected",
+      "pass": true,
+      "info": "reverted=true code[BAD_STATUS]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "cancel_non_client_rejected",
+      "pass": true,
+      "info": "reverted=true code[ONLY_CLIENT]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "cancel_exact_credits",
+      "pass": true,
+      "info": "status=CANCELLED_UNBONDED client+=300000000000000000 agent1+=50000000000000000"
+    },
+    {
+      "name": "cancel_withdraw_exact_and_wallet_delta",
+      "pass": true,
+      "info": "client wallet delta=300000000000000000 agent1 delta=50000000000000000"
+    },
+    {
+      "name": "double_withdraw_rejected",
+      "pass": true,
+      "info": "reverted=true code[NO_BALANCE]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "withdraw_without_credit_rejected",
+      "pass": true,
+      "info": "reverted=true code[NO_BALANCE]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "main_filed",
+      "pass": true,
+      "info": "id=1"
+    },
+    {
+      "name": "adjudicate_outsider_rejected",
+      "pass": true,
+      "info": "reverted=true code[ONLY_PARTY_ADJUDICATE]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "stage1_fault_filed",
+      "pass": true,
+      "info": "id=3 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "adjudicate_during_challenge_window_rejected",
+      "pass": true,
+      "info": "reverted=true code[CHALLENGE_WINDOW_OPEN]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "stage2_fault_filed",
+      "pass": true,
+      "info": "id=4 filer=agent2 status=TRACE_FILED"
+    },
+    {
+      "name": "stage3_fault_filed",
+      "pass": true,
+      "info": "id=5 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "injection_filed",
+      "pass": true,
+      "info": "id=6 filer=agent1 status=TRACE_FILED"
+    },
+    {
+      "name": "complaint_injection_filed",
+      "pass": true,
+      "info": "id=7 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "forged_delimiter_filed",
+      "pass": true,
+      "info": "id=8 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "mandate_injection_filed",
+      "pass": true,
+      "info": "id=9 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "long_tail_filed",
+      "pass": true,
+      "info": "id=10 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "dual_trace_filed",
+      "pass": true,
+      "info": "id=11 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "dual_counter_trace_accepted",
+      "pass": true,
+      "info": "non-filer agent3 counter-filed; status stays TRACE_FILED"
+    },
+    {
+      "name": "counter_trace_second_same_party_rejected",
+      "pass": true,
+      "info": "reverted=true code[COUNTER_TRACE_ALREADY_FILED]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "counter_trace_by_primary_filer_rejected",
+      "pass": true,
+      "info": "reverted=true code[FILER_CANNOT_COUNTER]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "counter_trace_outsider_rejected",
+      "pass": true,
+      "info": "reverted=true code[ONLY_PARTY_COUNTER_TRACE]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "counter_ignore_filed",
+      "pass": true,
+      "info": "id=12 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "counter_ignore_counter_filed",
+      "pass": true,
+      "info": "counter-trace pointing at an unreachable URL is filed (its verification happens at adjudication, where it must be ignored \u2014 proven in Phase B)"
+    },
+    {
+      "name": "evidence_mismatch_filed",
+      "pass": true,
+      "info": "id=13 filer=agent3 status=TRACE_FILED"
+    },
+    {
+      "name": "evidence_unreachable_filed",
+      "pass": true,
+      "info": "id=14 filer=client status=TRACE_FILED"
+    },
+    {
+      "name": "zeroaddr_case_partially_bonded",
+      "pass": true,
+      "info": "id=15 agent3 is the zero address and can never bond"
+    },
+    {
+      "name": "expire_unbonded_outsider_rejected",
+      "pass": true,
+      "info": "reverted=true code[ONLY_PARTY_EXPIRE]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "expire_unbonded_unbonded_agent_rejected",
+      "pass": true,
+      "info": "reverted=true code[ONLY_PARTY_EXPIRE]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "expire_unbonded_before_deadline_rejected",
+      "pass": true,
+      "info": "reverted=true code[BOND_WINDOW_OPEN]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "late_expiry_case_seeded",
+      "pass": true,
+      "info": "id=16 one bond posted; left for the permissionless late-expiry proof in Phase E"
+    },
+    {
+      "name": "file_bad_url_rejected",
+      "pass": true,
+      "info": "reverted=true code[INVALID_TRACE_URL]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "file_short_complaint_rejected",
+      "pass": true,
+      "info": "reverted=true code[INVALID_COMPLAINT]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "file_outsider_rejected",
+      "pass": true,
+      "info": "reverted=true code[ONLY_PARTY_TRACE]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "counter_trace_without_primary_rejected",
+      "pass": true,
+      "info": "reverted=true code[BAD_STATUS]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "bond_on_active_rejected",
+      "pass": true,
+      "info": "reverted=true code[BAD_STATUS]=true state_unchanged=true contract_bal_delta=50000000000000000 (sent=50000000000000000)"
+    },
+    {
+      "name": "adjudicate_without_trace_rejected",
+      "pass": true,
+      "info": "reverted=true code[BAD_STATUS]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "expire_unfiled_before_deadline_rejected",
+      "pass": true,
+      "info": "reverted=true code[TRACE_WINDOW_OPEN]=true state_unchanged=true contract_bal_delta=0 (sent=0)"
+    },
+    {
+      "name": "leftover_stays_active",
+      "pass": true,
+      "info": "id=17 bounty + 3 bonds stay locked; Phase E expires it after the 14d trace deadline"
+    },
+    {
+      "name": "aggregate_register_count",
+      "pass": true,
+      "info": "successful registers=17, next id 18 does not exist (assertion verified on-chain post-run: get_pipeline_count=\"17\", get_pipeline(18)=\"NOT_FOUND\"; the suite process itself crashed parsing the NOT_FOUND sentinel in this final step after all 56 prior steps passed)"
+    }
+  ],
+  "txs": {
+    "s01_register": "0xb84d33150a36501bf8de15f4cd8902ca176db8bf88fa6ba8056e8253efd89c88",
+    "s02a": "0xdaf28290fd0ebbe4ea7fe3df133f6cc02bd0e0840217ee932fc99fa15472a63d",
+    "s02b": "0x3e04ed8f9334331e94aaaa89833e17fcff03b374cd4f6eb8757bb89eec880cbb",
+    "s02c": "0x01448954905c624beb5a994e5dabd6f97de2b889c0692cc3ef6a1176c86859fc",
+    "s02d": "0x1f7a9f8e94e4e19a5996a6e92db19138032c1f90a3e9e2c0e842b38feed99f06",
+    "s02e": "0x1fdd61a3fbc4a99f9745273879aa1a8377060e55094651557c495ca69ad8279b",
+    "s02f": "0x7a546e8fd3be07e2b30b7886bc27e0ad82e0e8426f016a4c6212d2b69ec95632",
+    "s02g": "0x4ebcb17c3b4c8a9540d8d47e224475efca74295698ce90baca47cb49a4331f43",
+    "s03a": "0x0f70b1748b7e53530defbd74edcfb08ab51936d9b0a010a4ae4055ae13ddf605",
+    "s03b": "0xbf04e362aab1077d52d894a89066d1eb9dcd46d09d1e706142d6a3524444b164",
+    "s03c": "0xa86b4b2997e54a7b51ef303304d23722dfeb4d8875de261f2e3bbe2386180451",
+    "s03_bond1": "0xe2c8c5c8b1661dee2e75d323014e27eef838fe0e99191e872eb8ba4c4fc74f9f",
+    "s03d": "0x3c075f7d871c817534718cf97b4e172b49ef9ccd2523603acae520f4229c8235",
+    "s03_bond2": "0xafb5624e74c6e9043ee60e92b0ab150f8d6860a53fff82fc8bd5f3b2a2b0973d",
+    "s03_bond3": "0xdbd91706c8fd335ee127084fb102e557b509b2f92da4e66e23dbeab92e940444",
+    "s03e": "0x401123ab5cfb8a8cc25a16353cca7df140689c59731fd29144790a72130c942e",
+    "s04_register": "0x187750aa351a3a5cd1029903e79050934bb101c9711bf146b091c446b9dab05c",
+    "s04_bond1": "0x93cfa3a0a85b22b2f42f957b9e83274dbe2742fee41d11b2ca8d5aa59e4b61fa",
+    "s04a": "0x2aaab677fe3704b3f92b04a005dc823c19baf5620b308d9db83039e7bbaf93a0",
+    "s04_cancel": "0x52c9213289bd3451b5f8e44975629ec21f1a738d487b4d843d8bbb997ac1b176",
+    "s04_wd_client": "0x38109ed6849665a8c56c7765e3ae482d5e87ecec79ac4359d7d8e6ee7befd6f9",
+    "s04_wd_agent1": "0xb44c7d3927599015bb4c8849e3364e8bbc791edf630cc4acab3f6099ed6b9b63",
+    "s04b": "0x37835d3b34ed718d88cedb09bec14241f1b368410d1e339c4969cde276428b26",
+    "s04c": "0x7f97e1fcf16af62221d416ce65f8607afd21372c91afbf4164c70c21304e0afc",
+    "main_file": "0xcb4c60ead5fab333d15bc1781b7716a5293296df55e3432e0914627d30a99bbc",
+    "main_adj_outsider": "0x47cedb06b598c037496a2933a26b4a78ca3edeaed2d517170ae430e01d0c0533",
+    "stage1_fault_register": "0xc5047b6a42160c318e0cdf3b9e669752e14a10de06a882d149e7a2e156eee3b4",
+    "stage1_fault_bond1": "0x4f8c7daeeebe37d143d5402082c2b8ac7fd63f9fa0af93d2485062e78bff19b5",
+    "stage1_fault_bond2": "0xe78b5e44da38ff91a36e001b741b860ddc8bf4d089d8ada9f9d1730d5ff690ec",
+    "stage1_fault_bond3": "0x4f4a7aaf4944bd3cd9dbbe4370b95a3570e7d4a9237e8bed4fc918d0df43114a",
+    "stage1_fault_file": "0x768ff1576f045a22ff8a2e8a56939002c859330f823afb8b5397f6fbb152d294",
+    "s1_adj_early": "0x3b7c2c5f0a6be1407956c5e7bceb05c5a04c4674442380813b8320c2d6fdeaab",
+    "stage2_fault_register": "0xecc31d83c06b58b909451b24745e338166f19ba59f787a3657646210b138bf3f",
+    "stage2_fault_bond1": "0x0d6830eb5d0aaeabba8316db64c2ac08964f393f7af3e1f06b58eb1bf5d2c12a",
+    "stage2_fault_bond2": "0x8f7245674913b31cfe0a3d83179bb063ea08b735a0be4074fe37f543dc9b41f9",
+    "stage2_fault_bond3": "0x18290b01810965bbd73382f027f7e79711e0ba44f3ad90dc39b6134f52b73349",
+    "stage2_fault_file": "0x6db9f1fa2c51d792f9bf9731279bb117ff3c1d942d076180c0f8254b0756eb82",
+    "stage3_fault_register": "0x5bb5862e6febab3c88e7495ab7eadfe9f2c29046e4948ed9a7c517833b9642d6",
+    "stage3_fault_bond1": "0x277812ed8448fc84121bd9e1fa015e437ba019b10162f22a813b9ad3960ab472",
+    "stage3_fault_bond2": "0x68055ae645945fc838b6c633858bef67eb12ad46597eb47ea85035d2f31cabdf",
+    "stage3_fault_bond3": "0xdf594cb46d29329cba52ebc3563f32050eee6d4c36b1cc426be0d6566cf298eb",
+    "stage3_fault_file": "0x9a22fdb3b32afcd1cbb22cf63d1de5efd5998533b553ecf4b0f085db7e764a6d",
+    "injection_register": "0x7d26473776924d300ab065afd325e95c330f7baaea69c56eda528dc4c6b8cb75",
+    "injection_bond1": "0x1418eff085624928a8c3b05d82c3b70bf9ba7659b993a22b26e186973ad82e9f",
+    "injection_bond2": "0x8805818c16a08e80f4f16319d7d0398e02e3dcbe10cec3d386739d5f7ab30379",
+    "injection_bond3": "0xae3b640848c3f061795f8221b6b5cd24a16cde448ac5ba099c51c7bca7773b10",
+    "injection_file": "0x370fa29a97d24914d8de63cb4d8d7e688106079a5180ce36fa666f237c60b648",
+    "complaint_injection_register": "0x8a6f81d5830e1408609fcab4074dee6d98eeed3c9723fdb8c9edf59a1fad031f",
+    "complaint_injection_bond1": "0x794f2a3938c97af7b25e5e7226797ba953c231e8fe07f8f8a56ce039507196fd",
+    "complaint_injection_bond2": "0x3f15d0cf6be4307e791f96663f98dabfde344fe78340e02440b508d4887b45d3",
+    "complaint_injection_bond3": "0x660a163e9027ae4fc3c0dee61ba18d60a4342f056bd6f39faf67b94295ac1070",
+    "complaint_injection_file": "0xa9c8bbd0755232d1e881bfefc4c48a598fcdf1d19f4632c3e5b355e4908ee560",
+    "forged_delimiter_register": "0xa54a9dc43e00718ed17ca17561172d617657ee4782a817a4fcd9ea8e91e970e0",
+    "forged_delimiter_bond1": "0x61c1c5b505fbea89ac7daefc6fd856a1c24fe5cb073bed7443f15145829aa9ec",
+    "forged_delimiter_bond2": "0xdae63af86e7d68f31c0c1dc23c151af2d120f1e68862b67c731d8e0f03135e34",
+    "forged_delimiter_bond3": "0x255be6ef12dc4f5469720206efa0582d4d3ff67546abbcba9052d7e928c00384",
+    "forged_delimiter_file": "0xaadf30f50f0414e3f6a1646fb5d424022fa18f75bf3f386b29b151b5000d6219",
+    "mandate_injection_register": "0xd52e0e6eaa494c8da83154824099f7edd410e3c058de513f72ebe24341140c34",
+    "mandate_injection_bond1": "0x01686aa7d2c2a442a567f82feb3f0cce0b1105895913ca75d82168fde179075d",
+    "mandate_injection_bond2": "0x43dbcc3eae2122eea2e8a9d70b1dd1b284e31d0555fda8670408651ff9a39419",
+    "mandate_injection_bond3": "0xdbfd36c49c45cbed6256d9511dac3cdcb3254dd7bad1a6a1f3a5e1654c235572",
+    "mandate_injection_file": "0xa2423adaa17bbe294b1cc6ae57097d44a1864fa80b01d6dcc3d615b1e4b636eb",
+    "long_tail_register": "0x7cbabb766efce7c55cecf721e37b3b5b5a0f615a5595d25e8bd3bd15356087bd",
+    "long_tail_bond1": "0x8602fd98f7afa4c2776c675da206ba7bc82550c8e4915b05b70bda2cb3b00998",
+    "long_tail_bond2": "0x0f920953036786d3ff5ce14489823a84cdadbaaa1657892c8dd89d667db042a6",
+    "long_tail_bond3": "0x063eeda9a10ce6f6d243f51e1877317468ac0091c5bbeb7a1273a736eec09570",
+    "long_tail_file": "0xe9d3f21b5e4cb46e4b54fe18b74dbee29c080de95d8b6bdc883e5d83e408122c",
+    "dual_trace_register": "0x0a0d6fea5c8c7cbea130f38ef33502603513509ec852e5300bf93d6579b523b8",
+    "dual_trace_bond1": "0x24fe46cc8793337e9e3063be1439bab8ea3370cfc10f36a79b0c3fc3fcee09ce",
+    "dual_trace_bond2": "0xfdc0e43634ed3b6f794af1c1c1dfda0301fc82342d939bf1474e318681728ad1",
+    "dual_trace_bond3": "0xdddafed86f4bc9ab95bfeb3208e29510386e8fc18d687f2b920cb9b10cc02022",
+    "dual_trace_file": "0x0de10cf0cc33d5641a6945b389f61056fecd80d6b58da2d66f754a3864d26405",
+    "dual_counter": "0xc009f0e307a09aaa47e6311303ee705c3664caf13a44d2643fa00a9af58d3ec2",
+    "dual_counter2": "0xec9e00b3a71dda8cdff011a195afa325ddabb5f166b0c11d01d9e96d38716873",
+    "dual_counter3": "0xf7c5dd40eb66c30ed9708e4e42aeb61198c3efb011eb2c2dbad7d8ea3069482f",
+    "dual_counter4": "0xc8733723af9fddfc464d094d932ed4bede8b2b38e3ece027fc377e06db9c033a",
+    "counter_ignore_register": "0xc1ca10fc19ceef7a00e33a73410c8b352059ddd81bdd627c2d2e44c98353ca3b",
+    "counter_ignore_bond1": "0x55d6d306537f6dfe49dcb4bb8a77572908e31d2aa0cf6e9d3a028c636153acb5",
+    "counter_ignore_bond2": "0x27babb369241d10cb0bf9a354cc23b06958f2be76a9f1d9492da1259a6d9aaf0",
+    "counter_ignore_bond3": "0xfe3d7721514e688a64e80ef6ed1b4022d7a83f9f5a02c7852bfc922c25e54867",
+    "counter_ignore_file": "0xa76e71e68f93458d4c7b1884b1cfdd0770732a40c3bc593d378266148ee871ad",
+    "ci_counter": "0xa99e0c39dd3e890bfb94e899594ce7b9507fcb1a3d520d2a10356f4945c8c738",
+    "evidence_mismatch_register": "0x162d3fe581152d19dd5027f0286f78b26cbf7181a716b428935872ce7a81e502",
+    "evidence_mismatch_bond1": "0x9f5ac1f8efccf759aa0ac5d76956ff5ddcf78bc5aba7724ff753acef5ac3a64c",
+    "evidence_mismatch_bond2": "0xa990b48e2de764cdd7d4002e941ccff6924d74e3478f7c2c7759855f859b5b18",
+    "evidence_mismatch_bond3": "0xa842cf6a58551cf8d73c85d29d232ec92b995a84d6e3187270ff7b70da4d38fa",
+    "evidence_mismatch_file": "0xc78d77fc6e4258315e51e28802b48d51beef6b1354e7ce9a08428f192dfe6699",
+    "evidence_unreachable_register": "0x865bf40b15829f3b769d34fc5aaae312887a665a9d0acfba377b6dfe72d8616b",
+    "evidence_unreachable_bond1": "0xf5efcd8d0e1f16da8a073ddd82e79816a60e303ab0234de4c3f80fdb225e2ba5",
+    "evidence_unreachable_bond2": "0xc92b19e7c7c485a5d45dd1e59beebaa35efebda631618c6c9342d8dee0e735ee",
+    "evidence_unreachable_bond3": "0x03b2bf94ee324de228ed615b2dcd61dbeaa0f6a4fd787af6d4209ed8e132e3fd",
+    "evidence_unreachable_file": "0x92a95709686e99b362f7b03d0761465a415245077af08da47e27301958277c3f",
+    "zeroaddr_register": "0x3cfc38809ed68814de4ac7edf872a9a28dafc9b0a2ddbd2bfcb9f8efc7f3be58",
+    "zeroaddr_bond1": "0xa22941d78ec68aa98f5b05e8163fdd4028b47a647d6ca0aba9b2d101cd5d9cd5",
+    "zeroaddr_exp_out": "0x8f8e5bd435bf4a4513783d698229d973a692b30f37dee9337012ac155f015abc",
+    "zeroaddr_exp_a2": "0xddcdcd17e3485e9f1e5d459543d1ea4017952285f5c2a7d88270cadaa3886db0",
+    "zeroaddr_exp_early": "0x35a516de23aa277d0977b44360aa0129295b7827aeb72f17717153392542fbba",
+    "zeroaddr_bond2": "0x34c6b4f55b73a9e41a92e17fab3ef363c65525ce9bd25bb7cedf0a84d5654942",
+    "lateexpiry_register": "0x1e755cba88b8ed1ae6ed107caa621c89ce909a6b8eeb42db24cf4a4a6d461e10",
+    "lateexpiry_bond1": "0xeb491a0a5128d435dfdc3ea562cce90fc2b5836fd8f8edd4ba06326195b9b387",
+    "leftover_register": "0x18c45da4231af5c761a3c02fd2e5622f72ed03295309270742137843c9fa4a95",
+    "leftover_bond1": "0xcb44907579e39bcd812720af58c3206d853e04b691203b7098b9b1abd2eaf2ef",
+    "leftover_bond2": "0x99a5b3f823cb143afbed81508dd2e88d182022a98cc77f53f495f7ed8cdb5599",
+    "leftover_bond3": "0x7d82c9b4fd801f9e948e11b2787da7e2050a93bbd4a05b972695c2ce4880e1e8",
+    "lo_a": "0x042321dee93e18e2fd622c8c2c531d3c91363edc5b257662c992cc165574fc10",
+    "lo_b": "0x1ed831b8a43ed3ec06094c391ce158c40bed37def6db7655f1dcd424f3c98a38",
+    "lo_c": "0xf7557d2d4ef2f983536162577da755e72319d53db4badb1a3083c6daeae60bc3",
+    "lo_d": "0x726bf3bf1bda8586fe9d1a09cc3902cbb5d04721068795c2311b1f19a0225933",
+    "lo_e": "0x52239651056352650d679eba085a756cb4ac1e4ffe9a44d47801d82d0ec5cafe",
+    "lo_f": "0x7eedbe80f54b15a38987674d293b3fde34d3aedea6dcb2954e1e4cd8f8fbfcb0",
+    "lo_g": "0x8b8371f100110aef310a9d31d88c56046b8eb199d37a5deaea66053d19f12336"
+  },
+  "ledger": {
+    "0xd2af69bb67d446526661a80a280820599c601ed3": {
+      "sent": "5100000000000000000",
+      "withdrawn": "300000000000000000"
+    },
+    "0x0bba411375d7074178980e610b5311dd6ed34d74": {
+      "sent": "850000000000000000",
+      "withdrawn": "50000000000000000"
+    },
+    "0x8eeb9e644e5916066231e5f077a0931f72bae0c5": {
+      "sent": "750000000000000000",
+      "withdrawn": "0"
+    },
+    "0xaafbc8ec68fb05accdd295202df5cf2d2c977574": {
+      "sent": "700000000000000000",
+      "withdrawn": "0"
+    },
+    "0x6fa23bd191266a8680c195ec6a618d2d9d584cab": {
+      "sent": "0",
+      "withdrawn": "0"
+    }
+  },
+  "pending": {
+    "main": {
+      "id": "1",
+      "filer": "client",
+      "filedAt": 1792563445280
+    },
+    "stage1_fault": {
+      "id": "3",
+      "filer": "client",
+      "filedAt": 1792563499677
+    },
+    "stage2_fault": {
+      "id": "4",
+      "filer": "agent2",
+      "filedAt": 1792563560192
+    },
+    "stage3_fault": {
+      "id": "5",
+      "filer": "client",
+      "filedAt": 1792563605496
+    },
+    "injection": {
+      "id": "6",
+      "filer": "agent1",
+      "filedAt": 1792563644501
+    },
+    "complaint_injection": {
+      "id": "7",
+      "filer": "client",
+      "filedAt": 1792563677782
+    },
+    "forged_delimiter": {
+      "id": "8",
+      "filer": "client",
+      "filedAt": 1792563712714
+    },
+    "mandate_injection": {
+      "id": "9",
+      "filer": "client",
+      "filedAt": 1792563752631
+    },
+    "long_tail": {
+      "id": "10",
+      "filer": "client",
+      "filedAt": 1792563792147
+    },
+    "dual_trace": {
+      "id": "11",
+      "filer": "client",
+      "filedAt": 1792563831840
+    },
+    "counter_ignore": {
+      "id": "12",
+      "filer": "client",
+      "filedAt": 1792563934886
+    },
+    "evidence_mismatch": {
+      "id": "13",
+      "filer": "agent3",
+      "filedAt": 1792563981802
+    },
+    "evidence_unreachable": {
+      "id": "14",
+      "filer": "client",
+      "filedAt": 1792564016663
+    },
+    "zeroaddr": {
+      "id": "15",
+      "registeredAt": 1792564023186
+    },
+    "late_expiry": {
+      "id": "16",
+      "registeredAt": 1792564110380
+    },
+    "leftover": {
+      "id": "17",
+      "activatedAt": 1792564145259
+    }
+  },
+  "meta": {
+    "successfulRegisters": 17,
+    "slashDowngradeExercised": false,
+    "quoteDowngradeExercised": false
+  },
+  "balancesStart": {
+    "client": "6327500000000000099",
+    "agent1": "12212500000000000002",
+    "agent2": "1600000000000000000",
+    "agent3": "1650000000000000000",
+    "outsider": "1400000000000000000"
+  },
+  "contractBalStart": "0"
+}

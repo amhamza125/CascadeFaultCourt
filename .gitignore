@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+
+# environment / secrets
+.env
+.env*.local
+
+# test wallet key files — private keys never enter this repo
+tests/wallets/
+
+# logs and per-run scratch outputs (deployment.json + results.json are kept as evidence)
+*.log
+tests/results/*.log
+tests/results/results_run*.json
+tests/results/PHASE_A_NOTES.md
+
+# misc
+__pycache__/
+*.tsbuildinfo
+.DS_Store

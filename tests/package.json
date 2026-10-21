@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "genlayer-js": "^1.1.8",
+    "viem": "^2.57.7"
+  }
+}

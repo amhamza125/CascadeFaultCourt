@@ -1,0 +1,9 @@
+{
+  "contract": "CascadeFaultCourt",
+  "address": "0xf79fD6B02a50FBB085b64Fb61C7B69DFc80f77a2",
+  "deploy_tx": "0x4639a49ab5ce40f069596116dce6d927ae199e1691a68c030a62d9d3d9cd7294",
+  "deployed_at": "2026-10-21T05:41:31.555Z",
+  "deployer": "0xD2aF69BB67d446526661A80a280820599c601ed3",
+  "chain": "GenLayer StudioNet (61999)",
+  "overview_at_deploy": "{\"paused\": false, \"owner\": \"0xd2af69bb67d446526661a80a280820599c601ed3\", \"pipeline_count\": \"0\", \"total_adjudicated\": \"0\", \"contract_balance_wei\": \"0\"}"
+}
